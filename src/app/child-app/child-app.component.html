@@ -1,0 +1,95 @@
+<h1>All Data</h1>
+<!-- <table class = 'table'>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of data">
+            <td>{{customer.customerNo}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.address}}</td>
+            <td>{{customer.city}}</td>
+            <td>{{customer.state}}</td>
+        </tr>
+        
+    </tbody>
+</table> -->
+
+
+<button class="userdata" id="userD" (click)="getUserData($event)">userdata</button>
+<button (click)="getUserDataName()">sortname</button>
+<button (click)="getUserByIDStatus()">getUserByIDStatus</button>
+
+<table class = 'table1'>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Datecreated</th>
+            <th>DateModified</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of apiData">
+            <td>{{item.name}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.Datecreated}}</td>
+            <td>{{item.DateModified}}</td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+
+<table class = 'table2'>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Datecreated</th>
+            <th>DateModified</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of userNameData">
+            <td>{{item.name}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.Datecreated}}</td>
+            <td>{{item.DateModified}}</td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+
+
+<table class = 'table3'>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Datecreated</th>
+            <th>DateModified</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of getUserByID">
+            <td>{{item.name}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.Datecreated}}</td>
+            <td>{{item.DateModified}}</td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+
+<!-- <ul *ngFor="let customer of data">
+    <li>{{customer.customerNo}}</li>
+</ul> -->
