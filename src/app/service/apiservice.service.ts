@@ -22,6 +22,7 @@ export class ApiserviceService {
 
    return this.http.get(fullUrl, options)
   }
+// -------------------------------------post data---------------------------
 
   postData(url: string, data: any, queryParams = {}) {
     let fullUrl = this.baseUrl + url
@@ -33,7 +34,7 @@ export class ApiserviceService {
      params: queryParams
     }
 
-    return this.http.post(url,data,options)
+    return this.http.post(fullUrl,data,options)
   }
 
 

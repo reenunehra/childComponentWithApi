@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from '../data';
 import { ApiserviceService } from '../service/apiservice.service';
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-child-app',
@@ -8,57 +9,27 @@ import { ApiserviceService } from '../service/apiservice.service';
   styleUrls: ['./child-app.component.css'],
 })
 export class ChildAppComponent {
+
+
   apiData:any =[];
   userNameData:any=[];
   getUserByID:any=[];
 
-  // data: Data[] = [
-  //   {
-  //     customerNo: 1,
-  //     name: 'Rahuld Dravid',
-  //     address: 'bolg1',
-  //     city: 'Banglaore',
-  //     state: 'Karnataka',
-  //     country: 'India',
-  //   },
-  //   {
-  //     customerNo: 2,
-  //     name: 'Sachin Tendulkar',
-  //     address: 'bolg2',
-  //     city: 'Mumbai',
-  //     state: 'Maharastra',
-  //     country: 'India',
-  //   },
-  //   {
-  //     customerNo: 3,
-  //     name: 'Saurrav Ganguly',
-  //     address: 'bolg3',
-  //     city: 'Kolkata',
-  //     state: 'West Bengal',
-  //     country: 'India',
-  //   },
-  //   {
-  //     customerNo: 4,
-  //     name: 'Mahendra Singh Dhoni',
-  //     address: 'bolg4',
-  //     city: 'Ranchi',
-  //     state: 'Bihar',
-  //     country: 'India',
-  //   },
-  //   {
-  //     customerNo: 5,
-  //     name: 'Virat Kohli',
-  //     address: 'bolg5',
-  //     city: 'Delhi',
-  //     state: 'Delhi',
-  //     country: 'India',
-  //   },
-  // ];
+  postData:any = {};
+
+  
   constructor(private apiservice: ApiserviceService) {}
 
   ngOnInit(): void { 
 
     this.getUserData();
+
+    // this.postData = {
+    //   name: 'Deepak',
+    //   status : true,
+    //   Pincode : '12321'
+    // }
+
   } 
 
 // ------------------------------------------getUserData---------------------------------------------
@@ -111,6 +82,25 @@ export class ChildAppComponent {
 
     );
   }
+submitForm(form : NgForm){
+  let data = form.value
+  console.log(data)
+  this.apiservice.postData('/api/v1/users', data).subscribe(
+    (res:any)=>{
+      console.log(res);
+      if(res.success === true){
 
+        this.ResetForm(form)
+      }
+    },
+    (err)=>{
+      console.log(err);
+    }
+  )
+}
+ResetForm(form : any){
+form.reset();
+form.submitted = false
+}
   // postUserData() {}
 }
